@@ -22,17 +22,17 @@ app.get('/tasks', async (req, res) => {
 
 app.post('/tasks', async (req, res) => {
     const task = await Task.create(req.body);
-    res.json(test);
+    res.json(task);
 });
 
-app.put('/tasks/!id', async (req, res) => {
+app.put('/tasks/:id', async (req, res) => {
     const task = await Task.findByIdAndUpdate(req.params.id, req.body);
     res.json(task);
 });
 
-app.delete('/tasks/!id', async (req, res) =>{
+app.delete('/tasks/:id', async (req, res) =>{
     await Task.findByIdAndDelete(req.params.id);
-    res.sendStatus(284);
+    res.sendStatus(204);
 });
 
 const connectWithRetry = () => {
